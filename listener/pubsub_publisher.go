@@ -36,8 +36,7 @@ func (p *PubSubPublisher) Publish(ctx context.Context, _ *config.Config, log *lo
 
 	<-result.Ready()
 
-	_, err = result.Get(ctx)
-	if err != nil {
+	if _, err := result.Get(ctx); err != nil {
 		return fmt.Errorf("pubsub publish: %w", err)
 	}
 
