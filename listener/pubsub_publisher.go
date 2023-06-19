@@ -31,9 +31,12 @@ func (p *PubSubPublisher) Publish(ctx context.Context, _ *config.Config, log *lo
 	}
 
 	result := p.topic.Publish(context.Background(), &pubsub.Message{
+		Attributes: map[string]string{
+			"version":  "v1",
+			"internal": "true",
+		},
 		Data: msg,
 	})
-
 
 	if _, err := result.Get(ctx); err != nil {
 		return fmt.Errorf("pubsub publish: %w", err)
