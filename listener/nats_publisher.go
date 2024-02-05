@@ -48,7 +48,7 @@ func (n NatsPublisher) Publish(ctx context.Context, cfg *config.Config, log *log
 		"subject": subject,
 		"action":  event.Action,
 		"table":   event.Table,
-	}).Infoln("event was sent")
+	}).Debugln("event was sent")
 
 	return nil
 }

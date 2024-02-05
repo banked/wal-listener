@@ -113,7 +113,7 @@ func (c *Column) AssertValue(src []byte) {
 		err = json.Unmarshal(src, &m)
 		val = m
 	default:
-		logrus.WithFields(logrus.Fields{"pgtype": c.valueType, "column_name": c.name}).Warnln("unknown oid type")
+		logrus.WithFields(logrus.Fields{"pgtype": c.valueType, "column_name": c.name}).Debugln("unknown oid type")
 		val = strSrc
 	}
 
@@ -199,7 +199,7 @@ func (w *WalTransaction) CreateEventsWithFilter(tableMap map[string][]string) []
 				"table":  item.Table,
 				"action": item.Kind,
 			}).
-			Infoln("wal-message was skipped by filter")
+			Debugln("wal-message was skipped by filter")
 	}
 
 	return events

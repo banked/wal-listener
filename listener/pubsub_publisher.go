@@ -48,7 +48,7 @@ func (p *PubSubPublisher) Publish(ctx context.Context, _ *config.Config, log *lo
 		"topic":  p.topic.String(),
 		"action": event.Action,
 		"table":  event.Table,
-	}).Infoln("event was sent")
+	}).Debugln("event was sent")
 
 	return nil
 }
